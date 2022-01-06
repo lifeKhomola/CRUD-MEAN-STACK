@@ -13,6 +13,14 @@ const db = mongoose.connection;
 db.on('error',(error)=>console.error(error));
 db.once('open',() => console.log('connected to Database'));
 
+//our server to accept json
+app.use(express.json())
+
+//set up routes
+const subscribersRoutes = require('./routes/subscribers');
+app.use('/subscribers',subscribersRoutes)
+
+
 app.listen(port,()=>{
     console.log('Server Started')
 });
