@@ -5,7 +5,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 //create app variable to config the serve
 const app = express();
-const port = 3000;
+const port = 5000;
 
 //connect to the databae
 mongoose.connect(process.env.DATABASE_URL,{useNewUrlParser: true});
