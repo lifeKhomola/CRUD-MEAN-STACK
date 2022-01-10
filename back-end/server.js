@@ -95,6 +95,6 @@ app.get('/',(req,res)=>{
 
 const port = 4000;
 app.listen(port, ()=>{
-    console.log('Server Running')
+    console.log('Server Running on port 4000')
 }
 );
