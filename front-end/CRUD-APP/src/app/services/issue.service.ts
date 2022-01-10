@@ -44,8 +44,8 @@ export class IssueService {
     return this.http.post(`${this.url}/issues/update/${id}`,issue) 
   }
 
-  deleteIssue(id: any){
-    return this.http.get(`${this.url}/issue/delete/${id}`);
+  deleteIssue(id){
+    return this.http.get(`${this.url}/issues/delete/${id}`);
   }
 
 }

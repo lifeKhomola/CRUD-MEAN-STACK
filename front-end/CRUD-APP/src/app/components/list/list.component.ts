@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { IssueService } from 'src/app/services/issue.service';
+import {Router} from '@angular/router';
+import { MatTableDataSource } from '@angular/material/table';
+import { Issue } from 'src/app/issue.model';
+import { observable } from 'rxjs';
+
+
 
 @Component({
   selector: 'app-list',
@@ -8,12 +14,34 @@ import { IssueService } from 'src/app/services/issue.service';
 })
 export class ListComponent implements OnInit {
 
-  constructor(private issueService: IssueService) { }
+  issues: Issue[];
+  displayedColumns = ['title','responsible','severity','status','actions'];
+
+  constructor(private issueService: IssueService,
+    private router:Router) { }
 
   ngOnInit(): void {
-    this.issueService.getIssues().subscribe((issues) =>{
-      console.log(issues)
-    })
+    this.fetchIssues();
   }
 
+  fetchIssues() {
+    this.issueService
+    .getIssues()
+    .subscribe((data: Issue[]) => {
+      this.issues = data;
+      console.log('Data requested ... ');
+      console.log(this.issues);
+    });
+  }
+
+
+  editIssue(id){
+    this.router.navigate([`/edit/${id}`]);
+  }
+  deleteIssue(id)
+  {
+   this.issueService.deleteIssue(id).subscribe(()=>{
+    this.fetchIssues();
+   });
+  }
 }
