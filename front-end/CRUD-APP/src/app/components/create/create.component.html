@@ -29,21 +29,23 @@
         <button mat-raised-button color="accent" routerLink="/list">Back</button>&nbsp;
         <button type="submit" (click)="addIssue(title.value, responsible.value, description.value, severity.value)" [disabled]="createForm.pristine || createForm.invalid" mat-raised-button color="primary">Save</button>
       </form>
-    </mat-card> -->
+    </mat-card> --> 
   <!-- </div> -->
   <form [formGroup]="createForm" class="create-form">
     <div class="md-form">
-        <input mdbInput placeholder="Title" type="text" id="form58" class="form-control"  formControlName="title" #title>
+       
+        <input mdbInput placeholder="Responsible" type="text" id="form58" class="form-control" formControlName="responsible" #responsible>
+        
       </div>
       <br>
       <div class="md-form">
-        <input mdbInput placeholder="Responsible" type="text" id="form58" class="form-control" formControlName="responsible" #responsible>
+        <input mdbInput placeholder="Title" type="text" id="form58" class="form-control"  formControlName="title" #title>
       </div>
       <br>
       <div class="md-form">
         <input mdbInput placeholder="Description" type="text" id="form58" class="form-control" formControlName="description" #description>
       </div>
-      
+      <br>
       <div class="d-inline-block" ngbDropdown #myDrop="ngbDropdown" >
         <button class="btn btn-outline-primary mr-2" id="dropdownManual" ngbDropdownAnchor (focus)="myDrop.open()">Severity</button>
         <div ngbDropdownMenu aria-labelledby="dropdownManual" formControlName="severity" #severity>
@@ -52,8 +54,10 @@
           <button value="High" ngbDropdownItem>High</button>
         </div>
       </div>
+      <br>
+      <br>
       <div>  <button mat-raised-button color="accent" routerLink="/list">Back</button>&nbsp;
-        <button type="submit" (click)="addIssue(title.value,responsible.value, description.value, severity.value)" [disabled]="createForm.pristine || createForm.invalid" mat-raised-button color="primary">Save</button>
+        <button type="submit" (click)="addIssue(title.value, responsible.value, description.value, severity.value)" [disabled]="createForm.pristine || createForm.invalid" mat-raised-button color="primary">Save</button>
         </div>
   </form>
  

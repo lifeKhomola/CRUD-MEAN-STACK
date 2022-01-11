@@ -9,6 +9,9 @@ const app = express();
 const router = express.Router();
 app.use(cors());
 app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true })); 
+
+//connection to the database using mongoose connection
 
 mongoose.connect('mongodb+srv://vhutshilo:Vhutshilo1@cluster0.hi4oc.mongodb.net/issues')
 const connection = mongoose.connection;
@@ -18,6 +21,8 @@ connection.on('error',(error)=>{
 connection.once('open',() =>{
     console.log('mondodb database connection successfully')
 });
+
+
 //endpoints
 router.route('/issues').get((req,res) =>{
     Issue.find((err,issues) =>{
@@ -88,13 +93,8 @@ router.route('/issues/delete/:id').get((req,res) =>{
 
 app.use('/', router);
 
-app.get('/',(req,res)=>{
-    res.send('hello world')
-}
-);
-
 const port = 4000;
 app.listen(port, ()=>{
-    console.log('Server Running on port 4000')
+    console.log('Server Running on port:4000')
 }
 );

@@ -20,5 +20,4 @@ let Issue = new Schema({
     }
 });
 
-// export default mongoose.model('Issue',Issue);
 module.exports = mongoose.model('Issue',Issue);
